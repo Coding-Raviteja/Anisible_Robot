@@ -5,7 +5,7 @@
   ansible.builtin.shell: dnf module disable "{{ package }}" -y
 
 - name: Enabling default "{{ package }}" vesrion
-  ansible.builtin.shell: dnf module enable "{{ package }}":"{{ Version }}" -y 
+  ansible.builtin.shell: dnf module enable "{{ package }}":"{{ version }}" -y 
 
 - name: Installing "{{ package }}"
   ansible.builtin.package:
