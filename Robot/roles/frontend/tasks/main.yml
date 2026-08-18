@@ -14,7 +14,7 @@
     state: present
 
 - name: Starting services
-  ansible.builtin.services:
+  ansible.builtin.service:
     name: nginx
     module: yes
     state: present
