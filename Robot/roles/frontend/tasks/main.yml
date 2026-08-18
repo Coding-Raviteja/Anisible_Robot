@@ -15,7 +15,12 @@
 - name: Clean of the default Nginx
   ansible.builtin.file:
     path: /usr/share/nginx/html
-    state: absent    
+    state: absent
+
+- name: Clean of the default Nginx
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: directory    
 
 - name: Download and Extract frontend
   ansible.builtin.unarchive: 
