@@ -21,7 +21,7 @@
   ansible.builtin.unarchive: 
     src: "{{ url }}"
     dest: /usr/share/nginx/html 
-    remote_src: yes
+    remote_src: true
 
 - name: Starting services
   ansible.builtin.service:
