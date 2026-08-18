@@ -12,6 +12,12 @@
     name: nginx
     state: present
 
+- name: Download and Extract frontend
+  ansible.builtin.unarchive: 
+    src: "{{ url }}"
+    dest: /tmp/
+    remote_src: yes
+
 - name: Starting services
   ansible.builtin.service:
     name: nginx
