@@ -1,0 +1,20 @@
+- name: Disabling default Nginx vesrion
+  ansible.builtin.shell: dnf module disable nginx -y
+
+- name: Enabling default Nginx vesrion
+  ansible.builtin.dnf:
+    name: nginx
+    state: present 
+    module enable:
+      - nginx:1.24 
+
+- name: Installing Nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+
+- name: Starting services
+  ansible.builtin.services:
+    name: nginx
+    module: yes
+    state: present
