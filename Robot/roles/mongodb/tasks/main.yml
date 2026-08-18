@@ -1,0 +1,7 @@
+- name: Configuring the HostName
+  ansible.builtin.shell: set-hostname {{ comp }}-{{ env }}
+
+- name: Configuring the {{ comp }} repo
+  ansible.legacy.copy:
+    src: "{{ comp }}.repo"
+    dest: 

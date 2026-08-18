@@ -1,2 +1,5 @@
 [frontend]
 frontend.robobuy.site
+
+[mongodb]
+mongodb.robobuy.site
