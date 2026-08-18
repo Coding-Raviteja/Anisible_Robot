@@ -8,9 +8,10 @@
   ansible.builtin.shell: dnf module enable "{{ package }}":1.24 -y 
 
 - name: Installing "{{ package }}"
-  ansible.builtin."{{ package }}":
+  ansible.builtin.package:
     name: "{{ package }}"
     state: present
+    
 
 - name: Clean of the default "{{ package }}"
   ansible.builtin.file:
