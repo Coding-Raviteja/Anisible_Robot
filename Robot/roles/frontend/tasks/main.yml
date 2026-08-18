@@ -29,6 +29,11 @@
     dest: /usr/share/"{{ package }}"/html 
     remote_src: yes
 
+- name: Updating Nginx conf 
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf  
+
 - name: Starting services
   ansible.builtin.service:
     name: "{{ package }}"
