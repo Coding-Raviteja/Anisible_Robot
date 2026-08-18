@@ -18,6 +18,11 @@
     dest: /tmp/
     remote_src: yes
 
+- name: Clean of the default Nginx
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: absent    
+
 - name: Starting services
   ansible.builtin.service:
     name: nginx
