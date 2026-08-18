@@ -1,5 +1,5 @@
 - name: Disabling default Nginx vesrion
-  ansible.builtin.shell: 
+  ansible.builtin.dnf: 
     module_disable:
       - nginx 
     state: absent 
