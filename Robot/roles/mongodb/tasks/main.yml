@@ -4,4 +4,16 @@
 - name: Configuring the {{ comp }} repo
   ansible.legacy.copy:
     src: "{{ comp }}.repo"
-    dest: 
+    dest: /etc/yum.repos.d/{{ comp }}.repo
+
+- name: Package install of {{ comp }}
+  ansible.builtin.package:
+    name: "{{ package }}"
+    state: present
+
+- name: Replace of IP changes to "{{ package }}" services
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
