@@ -1,2 +1,2 @@
 comp: "mongodb"
-package: "mongodb-org"
+package: "mongodb-org"  
