@@ -1,16 +1,11 @@
 - name: HostName Configuring
   ansible.builtin.shell: set-hostname {{ comp }}-{{ env }}
 
-- name: Disabling default "{{ package }}" vesrion
-  ansible.builtin.shell: dnf module disable "{{ package }}" -y
-
-- name: Enabling default "{{ package }}" vesrion
-  ansible.builtin.shell: dnf module enable "{{ package }}":"{{ version }}" -y 
-
-- name: Installing "{{ package }}"
+- name: Installing needed"{{ package }}s"
   ansible.builtin.package:
-    name: "{{ package }}"
+    name: "{{ item }}"
     state: present
+  loop: "{{ package }}"
 
 - name: App user
   ansible.builtin.user:
@@ -35,26 +30,14 @@
     remote_src: yes
 
 - name: Genrating arttifacts of packages
-  community.general.npm:
-    path: "{{ appdir }}"
+  ansible.builtin.pip:
+    requirements: /app/requirements.txt
+    executable: pip3
 
 - name: Updating {{ comp }} conf 
   ansible.builtin.template:
     src: "{{ comp }}.service"
     dest: /etc/systemd/system/{{ comp }}.service  
-
-- name: Config the mongodb repo
-  ansible.builtin.cpoy:
-    src: mongodb.repo
-    dest: /etc/yum.repos.d/mongodb.repo
-
-- name: Installing mongodbShell
-  ansible.builtin.package:
-    name: mongodb.mongosh
-    state: present
-
-- name: Injecting Mongodb schema 
-  ansible.builtin.shell: "mongosh --host mongodb-{{ env }}.robobuy.site < /app/db/master-data.js"
 
 - name: Starting services
   ansible.builtin.service:
