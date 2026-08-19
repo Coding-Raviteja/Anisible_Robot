@@ -1,19 +1,28 @@
 - name: Configuring the HostName
   ansible.builtin.shell: set-hostname {{ comp }}-{{ env }}
 
-- name: Configuring the {{ comp }} repo
-  ansible.legacy.copy:
-    src: "{{ comp }}.repo"
-    dest: /etc/yum.repos.d/{{ comp }}.repo
+- name: Disabling default "{{ package }}" list
+  ansible.builtin.shell: dnf module disable list
 
-- name: Package install of {{ comp }}
+- name: Disabling default "{{ package }}" vesrion
+  ansible.builtin.shell: dnf module disable "{{ package }}" -y
+
+- name: Enabling default "{{ package }}" vesrion
+  ansible.builtin.shell: dnf module enable "{{ package }}":"{{ version }}" -y 
+
+- name: Installing "{{ package }}"
   ansible.builtin.package:
     name: "{{ package }}"
     state: present
 
+- name: Configuring the {{ comp }} repo
+  ansible.legacy.copy:
+    src: "{{ comp }}.repo"
+    dest: /etc/redis/{{ comp }}.repo
+
 - name: Replace of IP changes to "{{ package }}" services
   ansible.builtin.replace:
-    path: /etc/mongod.conf
+    path: /etc/redis.conf
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
 

@@ -1,2 +1,3 @@
 comp: "redis"
-package: "redis"  
+package: "redis" 
+version: "7"
