@@ -38,13 +38,14 @@
   community.general.npm:
     path: "{{ appdir }}"
 
-- name: Updating Nginx conf 
+- name: Updating {{ comp }} conf 
   ansible.builtin.template:
-    src: catalogue.service
+    src: "{{ comp }}.service"
     dest: /etc/systemd/system/{{ comp }}.service  
 
 - name: Starting services
   ansible.builtin.service:
-    name: "{{ package }}"
+    name: "{{ comp }}"
     enabled: yes
     state: restarted
+    daemon_reload: yes
