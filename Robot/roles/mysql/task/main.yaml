@@ -8,6 +8,7 @@
     name: "{{ package }}"
     enabled: yes
     state: restarted
-    
+
+
 - name: HostName Configuring
   ansible.builtin.shell: set-hostname frontend-{{ env }}
