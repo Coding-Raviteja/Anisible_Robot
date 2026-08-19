@@ -32,7 +32,7 @@
 - name: Genrating arttifacts of packages
   ansible.builtin.pip:
     requirements: "{{appdir}}/requirements.txt"
-  executable: pip3.11
+    executable: pip3
 
 - name: Updating {{ comp }} conf 
   ansible.builtin.template:
