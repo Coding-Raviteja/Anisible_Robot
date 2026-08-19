@@ -1,0 +1,6 @@
+url: "https://stan-robotshop.s3.amazonaws.com/cart-v3.zip"
+package: "nodejs"
+version: "20"
+comp: "cart"
+appuser: "roboshop"
+appdir: "/app"
