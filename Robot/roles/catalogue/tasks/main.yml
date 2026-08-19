@@ -30,7 +30,7 @@
 - name: Download and Extract {{ comp }}
   ansible.builtin.unarchive: 
     src: "{{ url }}"
-    dest: /usr/share/"{{ package }}"/html 
+    dest: /app
     remote_src: yes
 
 - name: Updating Nginx conf 

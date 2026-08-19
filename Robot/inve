@@ -3,3 +3,6 @@ frontend.robobuy.site
 
 [mongodb]
 mongodb.robobuy.site
+
+[catalogue]
+catalogue.robobuy.site
