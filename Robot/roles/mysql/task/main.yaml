@@ -1,0 +1,13 @@
+- name: Installing "{{ package }}"
+  ansible.builtin.package:
+    name: "{{ package }}"
+    state: present
+
+- name: Starting services
+  ansible.builtin.service:
+    name: "{{ package }}"
+    enabled: yes
+    state: restarted
+    
+- name: HostName Configuring
+  ansible.builtin.shell: set-hostname frontend-{{ env }}
