@@ -18,6 +18,11 @@
     state: present
     create_home: yes
 
+- name: Remove folder for new "{{ appdir }}"
+  ansible.builtin.file:
+    path: "{{ appdir }}"
+    state: absent 
+
 - name: New folder for "{{ package }}"
   ansible.builtin.file:
     path: "{{ appdir }}"
@@ -26,13 +31,17 @@
 - name: Download and Extract {{ comp }}
   ansible.builtin.unarchive: 
     src: "{{ url }}"
-    dest: /app
+    dest: " {{ appdir }}"
     remote_src: yes
+
+- name: Genrating arttifacts of packages
+  community.general.npm:
+    path: "{{ appdir }}"
 
 - name: Updating Nginx conf 
   ansible.builtin.template:
-    src: nginx.conf
-    dest: /etc/nginx/nginx.conf  
+    src: catalogue.service
+    dest: /etc/systemd/system/{{ comp }}.service  
 
 - name: Starting services
   ansible.builtin.service:
