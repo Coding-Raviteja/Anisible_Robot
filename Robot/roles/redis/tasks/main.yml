@@ -15,16 +15,17 @@
     name: "{{ package }}"
     state: present
 
-- name: Configuring the {{ comp }} repo
-  ansible.legacy.copy:
-    src: "{{ comp }}.repo"
-    dest: /etc/redis/{{ comp }}.repo
+- name: Replace of IP changes to "{{ package }}" services
+  ansible.builtin.replace:
+    path: "/etc/{{ comp }}/{{ comp }}.conf"
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
 
 - name: Replace of IP changes to "{{ package }}" services
   ansible.builtin.replace:
-    path: /etc/redis.conf
-    regexp: '127.0.0.1'
-    replace: '0.0.0.0'
+    path: "/etc/{{ comp }}/{{ comp }}.conf"
+    regexp: 'protected-mode yes'
+    replace: 'protected-mode no'
 
 - name: Starting services
   ansible.builtin.service:
