@@ -12,3 +12,6 @@ redis.robobuy.site
 
 [user]
 user.robobuy.site
+
+[cart]
+cart.robobuy.site
