@@ -1,12 +1,6 @@
 - name: HostName Configuring
   ansible.builtin.shell: set-hostname {{ comp }}-{{ env }}
 
-- name: Disabling default "{{ package }}" vesrion
-  ansible.builtin.shell: dnf module disable "{{ package }}" -y
-
-- name: Enabling default "{{ package }}" vesrion
-  ansible.builtin.shell: dnf module enable "{{ package }}":"{{ version }}" -y 
-
 - name: Installing "{{ package }}"
   ansible.builtin.package:
     name: "{{ package }}"
@@ -41,7 +35,15 @@
 - name: Updating {{ comp }} conf 
   ansible.builtin.template:
     src: "{{ comp }}.service"
-    dest: /etc/systemd/system/{{ comp }}.service  
+    dest: /etc/systemd/system/{{ comp }}.service 
+
+- name: Installing mysql for schema
+  ansible.builtin.package:
+    name: mysql
+    state: present
+
+- name: Injecting schema
+  ansible.builtin.shell: "mysql -h mysql-{{ env }}.robobuy.site -uroot -pRoboShop@1 < /app/db/schema.sql"
 
 - name: Starting services
   ansible.builtin.service:
