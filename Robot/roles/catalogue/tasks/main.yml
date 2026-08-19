@@ -14,18 +14,13 @@
 
 - name: App user
   ansible.builtin.user:
-    name: roboshop
+    name: "{{ appuser }}"
     state: present
     create_home: yes
 
-- name: Clean of the default "{{ package }}"
-  ansible.builtin.file:
-    path: /usr/share/"{{ package }}"/html
-    state: absent
-
 - name: New folder for "{{ package }}"
   ansible.builtin.file:
-    path: /app
+    path: "{{ appdir }}"
     state: directory    
 
 - name: Download and Extract {{ comp }}
