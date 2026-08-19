@@ -3,3 +3,7 @@ package: "maven"
 comp: "shipping"
 appuser: "roboshop"
 appdir: "/app"
+schema:
+  - "schema.sql"
+  - "app-user.sql"
+  - "master-date.sql"

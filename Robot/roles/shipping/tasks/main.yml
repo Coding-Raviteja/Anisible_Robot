@@ -28,10 +28,11 @@
     dest: " {{ appdir }}"
     remote_src: yes
 
-- name: Genrating arttifacts of packages
-  community.general.npm:
-    path: "{{ appdir }}"
-
+- name: Genrating arttifacts of mv packages
+  ansible.bulitin.command:
+    cmd: mvn clean package && mv target/shipping-1.0.jar shipping.jar
+    chdir : /app
+  
 - name: Updating {{ comp }} conf 
   ansible.builtin.template:
     src: "{{ comp }}.service"
@@ -43,7 +44,8 @@
     state: present
 
 - name: Injecting schema
-  ansible.builtin.shell: "mysql -h mysql-{{ env }}.robobuy.site -uroot -pRoboShop@1 < /app/db/schema.sql"
+  loop: "{{ schema }}"
+  ansible.builtin.shell: mysql -h mysql-{{ env }}.robobuy.site -uroot -pRoboShop@1 < /app/db/{{ item }}
 
 - name: Starting services
   ansible.builtin.service:
