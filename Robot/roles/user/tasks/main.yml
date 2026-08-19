@@ -43,19 +43,6 @@
     src: "{{ comp }}.service"
     dest: /etc/systemd/system/{{ comp }}.service  
 
-- name: Config the mongodb repo
-  ansible.builtin.cpoy:
-    src: mongodb.repo
-    dest: /etc/yum.repos.d/mongodb.repo
-
-- name: Installing mongodbShell
-  ansible.builtin.package:
-    name: mongodb.mongosh
-    state: present
-
-- name: Injecting Mongodb schema 
-  ansible.builtin.shell: "mongosh --host mongodb-{{ env }}.robobuy.site < /app/db/master-data.js"
-
 - name: Starting services
   ansible.builtin.service:
     name: "{{ comp }}"
