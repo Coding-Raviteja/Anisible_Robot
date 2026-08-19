@@ -1,6 +1,5 @@
 url: "https://stan-robotshop.s3.amazonaws.com/shipping-v3.zip"
-package: "nodejs"
-version: "20"
+package: "maven"
 comp: "shipping"
 appuser: "roboshop"
 appdir: "/app"
