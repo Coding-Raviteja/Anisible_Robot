@@ -6,3 +6,9 @@ mongodb.robobuy.site
 
 [catalogue]
 catalogue.robobuy.site
+
+[redis]
+redis.robobuy.site
+
+[user]
+user.robobuy.site
