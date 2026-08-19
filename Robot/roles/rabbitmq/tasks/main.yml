@@ -11,13 +11,23 @@
     name: "{{ package }}"
     state: present
 
-- name: Replace of IP changes to "{{ package }}" services
-  ansible.builtin.replace:
-    path: /etc/mongod.conf
-    regexp: '127.0.0.1'
-    replace: '0.0.0.0'
+- name: Starting "{{ package }}" 
+  ansible.builtin.service:
+    name: "{{ package }}"
+    enabled: yes
+    state: restarted
 
-- name: Starting "{{ package }}" service
+- name: Creating user fot {{ comp }} service
+  community.rabbitmq.rabbitmq_user:
+    user: "{{ appuser }}"
+    passeord: roboshop123
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
+
+- name: Starting "{{ package }}" 
   ansible.builtin.service:
     name: "{{ package }}"
     enabled: yes

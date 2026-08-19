@@ -18,3 +18,9 @@ cart.robobuy.site
 
 [mysql]
 mysql.robobuy.site
+
+[rabbitmq]
+rabbitmq.robobuy.site
+
+[payment]
+payment.robobuy.site
