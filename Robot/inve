@@ -16,7 +16,7 @@ user-dev.robobuy.site
 [cart]
 cart-dev.robobuy.site
 
-[Mysql]
+[mysql]
 mysql-dev.robobuy.site
 
 [rabbitmq]
