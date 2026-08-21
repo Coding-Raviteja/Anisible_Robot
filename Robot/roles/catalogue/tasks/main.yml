@@ -50,7 +50,7 @@
 
 - name: Installing mongodbShell
   ansible.builtin.package:
-    name: mongodb.mongosh
+    name: mongodb-mongosh
     state: present
 
 - name: Injecting Mongodb schema 
