@@ -2,7 +2,7 @@
   ansible.builtin.shell: set-hostname {{ comp }}-{{ env }}
 
 - name: Disabling default "{{ package }}" list
-  ansible.builtin.shell: dnf module disable list
+  ansible.builtin.shell: dnf module list
 
 - name: Disabling default "{{ package }}" vesrion
   ansible.builtin.shell: dnf module disable "{{ package }}" -y

@@ -14,7 +14,7 @@ redis-dev.robobuy.site
 user-dev.robobuy.site
 
 [cart]
-cart.robobuy.site
+cart-dev.robobuy.site
 
 [mysql]
 mysql.robobuy.site
