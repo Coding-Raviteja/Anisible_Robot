@@ -1,3 +1,6 @@
+- name: HostName Configuring
+  ansible.builtin.shell: set-hostname frontend-{{ env }}
+  
 - name: Installing "{{ package }}"
   ansible.builtin.package:
     name: "{{ package }}"
