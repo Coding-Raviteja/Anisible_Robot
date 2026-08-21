@@ -54,7 +54,7 @@
     state: present
 
 - name: Injecting Mongodb schema 
-  ansible.builtin.shell: "mongosh --host mongodb.robobuy.site < /app/db/master-data.js"
+  ansible.builtin.shell: "mongosh --host mongodb-{{ env }}.robobuy.site < /app/db/master-data.js"
 
 - name: Starting services
   ansible.builtin.service:
