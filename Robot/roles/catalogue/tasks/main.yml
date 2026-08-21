@@ -41,10 +41,10 @@
 - name: Updating {{ comp }} conf 
   ansible.builtin.template:
     src: "{{ comp }}.service"
-    dest: /etc/systemd/system/{{ comp }}.service  
+    dest: /etc/systemd/system/{{ comp }}.service 
 
-- name: Config the mongodb repo
-  ansible.builtin.cpoy:
+- name: Config the mongod repo
+  ansible.builtin.copy:
     src: mongodb.repo
     dest: /etc/yum.repos.d/mongodb.repo
 
