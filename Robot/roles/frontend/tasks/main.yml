@@ -31,8 +31,8 @@
 
 - name: Updating Nginx conf 
   ansible.builtin.template:
-    src: nginx.conf
-    dest: /etc/nginx/nginx.conf  
+    src: "{{ package }}".conf
+    dest: /etc/nginx/"{{ package }}".conf  
 
 - name: Starting services
   ansible.builtin.service:
