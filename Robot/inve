@@ -1,17 +1,17 @@
 [frontend]
-frontend.robobuy.site
+frontend-dev.robobuy.site
 
 [mongodb]
-mongodb.robobuy.site
+mongodb-dev.robobuy.site
 
 [catalogue]
-catalogue.robobuy.site
+catalogue-dev.robobuy.site
 
 [redis]
-redis.robobuy.site
+redis-dev.robobuy.site
 
 [user]
-user.robobuy.site
+user-dev.robobuy.site
 
 [cart]
 cart.robobuy.site
