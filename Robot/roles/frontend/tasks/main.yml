@@ -15,24 +15,24 @@
 
 - name: Clean of the default "{{ package }}"
   ansible.builtin.file:
-    path: /usr/share/"{{ package }}"/html
+    path: /usr/share/{{ package }}/html
     state: absent
 
 - name: New folder for "{{ package }}"
   ansible.builtin.file:
-    path: /usr/share/"{{ package }}"/html
+    path: /usr/share/{{ package }}/html
     state: directory    
 
 - name: Download and Extract frontend
   ansible.builtin.unarchive: 
     src: "{{ url }}"
-    dest: /usr/share/"{{ package }}"/html 
+    dest: /usr/share/{{ package }}/html 
     remote_src: yes
 
 - name: Updating Nginx conf 
   ansible.builtin.template:
     src: "{{ package }}.conf"
-    dest: /etc/nginx/"{{ package }}".conf  
+    dest: /etc/nginx/nginx.conf  
 
 - name: Starting services
   ansible.builtin.service:
