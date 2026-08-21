@@ -17,10 +17,10 @@ user-dev.robobuy.site
 cart-dev.robobuy.site
 
 [mysql]
-mysql.robobuy.site
+mysql-dev.robobuy.site
 
 [rabbitmq]
-rabbitmq.robobuy.site
+rabbitmq-dev.robobuy.site
 
 [payment]
-payment.robobuy.site
+payment-dev.robobuy.site
