@@ -23,12 +23,12 @@
   community.general.npm:
     path: "{{ appdir }}"
 
-- name: Config of HostName
+- name: Inject schema mongo
   ansible.builtin.include_role:
     name: common
     tasks_from: injectMongoschema
 
-- name: Config of HostName
+- name: Config of services
   ansible.builtin.include_role:
     name: common
     tasks_from: configservice
