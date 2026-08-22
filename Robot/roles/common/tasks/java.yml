@@ -23,7 +23,10 @@
     src: "{{ comp }}.service"
     dest: /etc/systemd/system/{{ comp }}.service 
 
-
+- name: Creating of user and App
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: injectMysql
 
 - name: Starting services
   ansible.builtin.service:
