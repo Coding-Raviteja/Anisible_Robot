@@ -25,13 +25,13 @@
 - name: Download and Extract {{ comp }}
   ansible.builtin.unarchive: 
     src: "{{ url }}"
-    dest: " {{ appdir }}"
+    dest: "{{ appdir }}"
     remote_src: yes
 
 - name: Genrating arttifacts of mv packages
   ansible.bulitin.command:
     cmd: mvn clean package && mv target/shipping-1.0.jar shipping.jar
-    chdir : /app
+    chdir : "{{ appdir }}"
   
 - name: Updating {{ comp }} conf 
   ansible.builtin.template:
