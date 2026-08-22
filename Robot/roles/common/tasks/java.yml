@@ -23,14 +23,7 @@
     src: "{{ comp }}.service"
     dest: /etc/systemd/system/{{ comp }}.service 
 
-- name: Installing mysql for schema
-  ansible.builtin.package:
-    name: mysql
-    state: present
 
-- name: Injecting schema
-  loop: "{{ schema }}"
-  ansible.builtin.shell: mysql -h mysql-{{ env }}.robobuy.site -uroot -pRoboShop@1 < /app/db/{{ item }}
 
 - name: Starting services
   ansible.builtin.service:
