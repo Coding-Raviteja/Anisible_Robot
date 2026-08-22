@@ -26,7 +26,7 @@
 - name: Download and Extract {{ comp }}
   ansible.builtin.unarchive: 
     src: "{{ url }}"
-    dest: " {{ appdir }}"
+    dest: "{{ appdir }}"
     remote_src: yes
 
 - name: Genrating arttifacts of packages
