@@ -1,7 +1,7 @@
 - name: Config of HostName
   ansible.builtin.include_role:
     name: common
-    task_from: hostname
+    tasks_from: hostname
 
 - name: Disabling default "{{ package }}" vesrion
   ansible.builtin.shell: dnf module disable "{{ package }}" -y
@@ -17,7 +17,7 @@
 - name: Creating of user and App
   ansible.builtin.include_role:
     name: common
-    task_from: appusercreate
+    tasks_from: appusercreate
 
 - name: Genrating arttifacts of packages
   community.general.npm:
@@ -26,9 +26,9 @@
 - name: Config of HostName
   ansible.builtin.include_role:
     name: common
-    task_from: injectMongoschema
+    tasks_from: injectMongoschema
 
 - name: Config of HostName
   ansible.builtin.include_role:
     name: common
-    task_from: configservice
+    tasks_from: configservice
