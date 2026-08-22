@@ -1,5 +1,5 @@
 - name: Config of HostName
-  anisble.builtin.include_role:
+  ansible.builtin.include_role:
     name: common
     task_from: hostname
 
@@ -15,7 +15,7 @@
     state: present
 
 - name: Creating of user and App
-  anisble.builtin.include_role:
+  ansible.builtin.include_role:
     name: common
     task_from: appusercreate
 
@@ -24,11 +24,11 @@
     path: "{{ appdir }}"
 
 - name: Config of HostName
-  anisble.builtin.include_role:
+  ansible.builtin.include_role:
     name: common
     task_from: injectMongoschema
 
 - name: Config of HostName
-  anisble.builtin.include_role:
+  ansible.builtin.include_role:
     name: common
     task_from: configservice
