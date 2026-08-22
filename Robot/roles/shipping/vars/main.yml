@@ -6,4 +6,4 @@ appdir: "/app"
 schema:
   - "schema.sql"
   - "app-user.sql"
-  - "master-date.sql"
+  - "master-data.sql"
