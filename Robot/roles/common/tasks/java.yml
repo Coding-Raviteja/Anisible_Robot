@@ -1,5 +1,7 @@
-- name: HostName Configuring
-  ansible.builtin.shell: set-hostname {{ comp }}-{{ env }}
+- name: Creating of user and App
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: hostname
 
 - name: Installing "{{ package }}"
   ansible.builtin.package:
