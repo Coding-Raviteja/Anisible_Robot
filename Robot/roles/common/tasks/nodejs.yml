@@ -1,8 +1,8 @@
-- name: Config {{ comp }}
+- name: Config of HostName
   anisble.builtin.include_role:
     name: common
-    task_from: nodejs
-    
+    task_from: hostname
+
 - name: Disabling default "{{ package }}" vesrion
   ansible.builtin.shell: dnf module disable "{{ package }}" -y
 
