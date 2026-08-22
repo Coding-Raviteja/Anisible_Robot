@@ -14,7 +14,7 @@
     name: "{{ package }}"
     state: present
 
-- name: Config of HostName
+- name: Creating of user and App
   anisble.builtin.include_role:
     name: common
     task_from: appusercreate
@@ -23,27 +23,12 @@
   community.general.npm:
     path: "{{ appdir }}"
 
-- name: Updating {{ comp }} conf 
-  ansible.builtin.template:
-    src: "{{ comp }}.service"
-    dest: /etc/systemd/system/{{ comp }}.service 
+- name: Config of HostName
+  anisble.builtin.include_role:
+    name: common
+    task_from: injectMongoschema
 
-- name: Config the mongod repo
-  ansible.builtin.copy:
-    src: mongodb.repo
-    dest: /etc/yum.repos.d/mongodb.repo
-
-- name: Installing mongodbShell
-  ansible.builtin.package:
-    name: mongodb-mongosh
-    state: present
-
-- name: Injecting Mongodb schema 
-  ansible.builtin.shell: "mongosh --host mongodb-{{ env }}.robobuy.site < /app/db/master-data.js"
-
-- name: Starting services
-  ansible.builtin.service:
-    name: "{{ comp }}"
-    enabled: yes
-    state: restarted
-    daemon_reload: yes
+- name: Config of HostName
+  anisble.builtin.include_role:
+    name: common
+    task_from: configservice
