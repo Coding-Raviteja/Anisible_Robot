@@ -26,7 +26,7 @@
 - name: Inject schema mongo
   ansible.builtin.include_role:
     name: common
-    tasks_from: injectMongoschem
+    tasks_from: injectMongoschema
   when: setup_mongodb_schema is defined  
 
 - name: Config of services
