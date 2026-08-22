@@ -14,7 +14,10 @@
     name: "{{ package }}"
     state: present
 
-
+- name: Config of HostName
+  anisble.builtin.include_role:
+    name: common
+    task_from: appusercreate
 
 - name: Genrating arttifacts of packages
   community.general.npm:
