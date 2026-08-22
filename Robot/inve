@@ -24,3 +24,6 @@ rabbitmq-dev.robobuy.site
 
 [payment]
 payment-dev.robobuy.site
+
+[shipping]
+shipping-dev.robobuy.site
