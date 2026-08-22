@@ -29,7 +29,7 @@
     remote_src: yes
 
 - name: Genrating arttifacts of mv packages
-  ansible.bulitin.command:
+  ansible.builtin.command:
     cmd: mvn clean package && mv target/shipping-1.0.jar shipping.jar
     chdir : "{{ appdir }}"
   
