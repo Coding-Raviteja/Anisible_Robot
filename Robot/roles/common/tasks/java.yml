@@ -28,6 +28,12 @@
     name: common
     tasks_from: injectMysql
   when: setup_mysql_schema is defined
+
+- name: Creating of user and App
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: configserivce
+
 - name: Starting services
   ansible.builtin.service:
     name: "{{ comp }}"
