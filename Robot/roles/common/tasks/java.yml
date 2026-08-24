@@ -17,11 +17,6 @@
   ansible.builtin.shell:
     cmd: mvn clean package && mv target/shipping-1.0.jar shipping.jar
     chdir : "{{ appdir }}"
-  
-- name: Updating {{ comp }} conf 
-  ansible.builtin.template:
-    src: "{{ comp }}.service"
-    dest: /etc/systemd/system/{{ comp }}.service 
 
 - name: Creating of user and App
   ansible.builtin.include_role:
@@ -33,10 +28,3 @@
   ansible.builtin.include_role:
     name: common
     tasks_from: configserivce
-
-- name: Starting services
-  ansible.builtin.service:
-    name: "{{ comp }}"
-    enabled: yes
-    state: restarted
-    daemon_reload: yes
