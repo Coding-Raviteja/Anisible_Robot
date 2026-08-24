@@ -1,4 +1,4 @@
-- name: Creating of user and App
+- name: HostName setup
   ansible.builtin.include_role:
     name: common
     tasks_from: hostname
