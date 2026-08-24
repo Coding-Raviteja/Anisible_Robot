@@ -1,33 +1,18 @@
-- name: HostName Configuring
-  ansible.builtin.shell: set-hostname {{ comp }}-{{ env }}
-
+- name: HostName setup
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: hostname
+    
 - name: Installing needed"{{ package }}s"
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
   loop: "{{ package }}"
 
-- name: App user
-  ansible.builtin.user:
-    name: "{{ appuser }}"
-    state: present
-    create_home: yes
-
-- name: Remove folder for new "{{ appdir }}"
-  ansible.builtin.file:
-    path: "{{ appdir }}"
-    state: absent 
-
-- name: New folder for "{{ package }}"
-  ansible.builtin.file:
-    path: "{{ appdir }}"
-    state: directory    
-
-- name: Download and Extract {{ comp }}
-  ansible.builtin.unarchive: 
-    src: "{{ url }}"
-    dest: "{{ appdir }}"
-    remote_src: yes
+- name: Creating of user and App
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: appusercreate
 
 - name: Genrating arttifacts of packages
   ansible.builtin.pip:
