@@ -24,7 +24,7 @@
     tasks_from: injectMysql
   when: setup_mysql_schema is defined
 
-- name: Creating of user and App
+- name: Restarting config systemd and App
   ansible.builtin.include_role:
     name: common
     tasks_from: configserivce

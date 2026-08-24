@@ -29,7 +29,7 @@
     tasks_from: injectMongoschema
   when: setup_mongodb_schema is defined  
 
-- name: Config of services
+- name: Restarting config systemd and App
   ansible.builtin.include_role:
     name: common
     tasks_from: configservice
