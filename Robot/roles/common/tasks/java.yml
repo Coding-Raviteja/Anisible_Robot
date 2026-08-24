@@ -27,7 +27,7 @@
   ansible.builtin.include_role:
     name: common
     tasks_from: injectMysql
-
+  when: setup_mysql_schema is defined
 - name: Starting services
   ansible.builtin.service:
     name: "{{ comp }}"
