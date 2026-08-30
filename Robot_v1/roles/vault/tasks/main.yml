@@ -1,0 +1,24 @@
+- name: Configuring the HostName
+  ansible.builtin.shell: set-hostname {{ comp }}-{{ env }}
+
+- name: Configuring the "{{ package }}" repo
+  ansible.builtin.template:
+    src: "{{ package }}.repo"
+    dest: "/etc/yum.repos.d/{{ package }}.repo"
+
+- name: Installing "{{ package }}" services
+  ansible.builtin.package:
+    name: "{{ package }}"
+    state: present
+
+- name: Configuring the "{{ package }}" service
+  ansible.builtin.template:
+    src: "{{ package }}.hcl"
+    dest: "/etc/{{ package }}.d/{{ package }}.hcl"
+
+- name: Starting services
+  ansible.builtin.service:
+    name: "{{ package }}"
+    enabled: yes
+    state: restarted
+

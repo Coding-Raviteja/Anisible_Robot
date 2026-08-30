@@ -1,0 +1,11 @@
+- name: Updating {{ comp }} conf 
+  ansible.builtin.template:
+    src: "{{ comp }}.service"
+    dest: /etc/systemd/system/{{ comp }}.service
+    
+- name: Starting services
+  ansible.builtin.service:
+    name: "{{ comp }}"
+    enabled: yes
+    state: restarted
+    daemon_reload: yes

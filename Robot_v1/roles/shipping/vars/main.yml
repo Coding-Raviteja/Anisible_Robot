@@ -1,0 +1,11 @@
+url: "https://stan-robotshop.s3.amazonaws.com/shipping-v3.zip"
+package: "maven"
+comp: "shipping"
+appuser: "roboshop"
+appdir: "/app"
+schema:
+  - "schema.sql"
+  - "app-user.sql"
+  - "master-data.sql"
+
+setup_mysql_schema: true

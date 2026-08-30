@@ -1,0 +1,35 @@
+- name: Config of HostName
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: hostname
+
+- name: Disabling default "{{ package }}" vesrion
+  ansible.builtin.shell: dnf module disable "{{ package }}" -y
+
+- name: Enabling default "{{ package }}" vesrion
+  ansible.builtin.shell: dnf module enable "{{ package }}":"{{ version }}" -y 
+
+- name: Installing "{{ package }}"
+  ansible.builtin.package:
+    name: "{{ package }}"
+    state: present
+
+- name: Creating of user and App
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: appusercreate
+
+- name: Genrating arttifacts of packages
+  community.general.npm:
+    path: "{{ appdir }}"
+
+- name: Inject schema mongo
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: injectMongoschema
+  when: setup_mongodb_schema is defined  
+
+- name: Restarting config systemd and App
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: configservice

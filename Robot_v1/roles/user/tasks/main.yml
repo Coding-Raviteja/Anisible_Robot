@@ -1,0 +1,4 @@
+- name: Config {{ comp }}
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: nodejs

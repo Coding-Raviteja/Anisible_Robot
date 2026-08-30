@@ -1,0 +1,34 @@
+- name: Configuring the HostName
+  ansible.builtin.shell: set-hostname {{ comp }}-{{ env }}
+
+- name: Configuring the {{ comp }} repo
+  ansible.legacy.copy:
+    src: "{{ comp }}.repo"
+    dest: /etc/yum.repos.d/{{ comp }}.repo
+
+- name: Package install of {{ comp }}
+  ansible.builtin.package:
+    name: "{{ package }}"
+    state: present
+
+- name: Starting "{{ package }}" 
+  ansible.builtin.service:
+    name: "{{ package }}"
+    enabled: yes
+    state: restarted
+
+- name: Creating user fot {{ comp }} service
+  community.rabbitmq.rabbitmq_user:
+    user: "{{ appuser }}"
+    passeord: roboshop123
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
+
+- name: Starting "{{ package }}" 
+  ansible.builtin.service:
+    name: "{{ package }}"
+    enabled: yes
+    state: restarted

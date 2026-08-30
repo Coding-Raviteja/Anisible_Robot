@@ -1,0 +1,30 @@
+- name: HostName setup
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: hostname
+
+- name: Installing "{{ package }}"
+  ansible.builtin.package:
+    name: "{{ package }}"
+    state: present
+
+- name: Creating of user and App
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: appusercreate
+
+- name: Genrating arttifacts of mv packages
+  ansible.builtin.shell:
+    cmd: mvn clean package && mv target/shipping-1.0.jar shipping.jar
+    chdir : "{{ appdir }}"
+
+- name: Creating of user and App
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: injectMysql
+  when: setup_mysql_schema is defined
+
+- name: Restarting config systemd and App
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: configserivce

@@ -1,0 +1,25 @@
+- name: HostName setup
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: hostname
+    
+- name: Installing needed"{{ package }}s"
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ package }}"
+
+- name: Creating of user and App
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: appusercreate
+
+- name: Genrating arttifacts of packages
+  ansible.builtin.pip:
+    requirements: "{{appdir}}/requirements.txt"
+    executable: pip3
+
+- name: Restarting config systemd and App
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: configserivce

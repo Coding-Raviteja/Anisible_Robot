@@ -1,0 +1,3 @@
+comp: "redis"
+package: "redis" 
+version: "7"

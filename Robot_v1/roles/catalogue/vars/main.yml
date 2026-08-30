@@ -1,0 +1,7 @@
+url: "https://stan-robotshop.s3.amazonaws.com/catalogue-v3.zip"
+package: "nodejs"
+version: "20"
+comp: "catalogue"
+appuser: "roboshop"
+appdir: "/app"
+setup_mongodb_schema: "true"
