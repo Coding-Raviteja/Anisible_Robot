@@ -4,3 +4,5 @@ version: "20"
 comp: "cart"
 appuser: "roboshop"
 appdir: "/app"
+
+secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/{{ comp  }}-{{ env }} token={{ token }} url=http://vault-tool.robobuy.site:8200 validate_certs=false') }}"
