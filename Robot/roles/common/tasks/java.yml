@@ -16,7 +16,7 @@
 - name: Genrating arttifacts of mv packages
   ansible.builtin.shell:
     cmd: mvn clean package && mv target/shipping-1.0.jar shipping.jar
-    chdir : "{{ appdir }}"
+    chdir: "{{ appdir }}"
 
 - name: Creating of user and App
   ansible.builtin.include_role:
@@ -27,4 +27,4 @@
 - name: Restarting config systemd and App
   ansible.builtin.include_role:
     name: common
-    tasks_from: configserivce
+    tasks_from: configservice
