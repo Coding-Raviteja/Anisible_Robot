@@ -2,4 +2,4 @@ comp: "rabbitmq"
 package: "rabbitmq-server"
 appuser: "roboshop"
 
-secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/rabbitmq-{{ env }} token={{ token }} url=http://vault-tool.robobuy.site:8200 validate_certs=false') }}"
+secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/{{ comp }}-{{ env }} token={{ token }} url=http://vault-tool.robobuy.site:8200 validate_certs=false') }}"
