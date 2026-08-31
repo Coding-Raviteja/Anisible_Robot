@@ -8,7 +8,7 @@
 
 - name: Starting services
   ansible.builtin.service:
-    name: "{{ comp }}d"
+    name: "mysqld"
     enabled: yes
     state: restarted
   
