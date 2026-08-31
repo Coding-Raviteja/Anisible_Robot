@@ -6,3 +6,5 @@ package:
 comp: "payment"
 appuser: "roboshop"
 appdir: "/app"
+
+secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/rabbitmq-{{ env }} token={{ token }} url=http://vault-tools.robobuy.site:8200 validate_certs=false') }}"
