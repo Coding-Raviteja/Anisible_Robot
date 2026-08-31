@@ -20,7 +20,7 @@
 - name: Creating user fot {{ comp }} service
   community.rabbitmq.rabbitmq_user:
     user: "{{ appuser }}"
-    passeord: roboshop123
+    passeord: {{ secrets.rabbitmq_pass}}
     vhost: /
     configure_priv: .*
     read_priv: .*
