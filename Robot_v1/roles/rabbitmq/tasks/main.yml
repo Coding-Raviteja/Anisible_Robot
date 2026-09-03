@@ -20,7 +20,7 @@
 - name: Creating user for {{ comp }} service
   community.rabbitmq.rabbitmq_user:
     user: "{{ appuser }}"
-    password: "{{ secrets.rabbitmq_pass }}"
+    password: "{{ secrets.rabbit_pass }}"
     vhost: /
     configure_priv: .*
     read_priv: .*
