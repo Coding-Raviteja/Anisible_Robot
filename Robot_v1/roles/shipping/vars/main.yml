@@ -9,3 +9,4 @@ schema:
   - "master-data.sql"
 
 setup_mysql_schema: true
+
