@@ -7,4 +7,5 @@ comp: "payment"
 appuser: "roboshop"
 appdir: "/app"
 
-secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/rabbitmq-' {{ env }} ' token=' {{ token }} ' url=http://vault-tool.robobuy.site:8200 validate_certs=false') }}"
+rabbitmq_user: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/rabbitmq-' ~ env ~ ':rabbitmq_user token=' ~ token ~ ' url=http://vault-tool.robobuy.site:8200 validate_certs=false') }}"
+rabbitmq_pass: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=kv/data/rabbitmq-' ~ env ~ ':rabbitmq_pass token=' ~ token ~ ' url=http://vault-tool.robobuy.site:8200 validate_certs=false') }}"
